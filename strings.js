@@ -1,9 +1,7 @@
-console.log("strings.js");
+// console.log("strings.js");
 
 
 function reversal(testString) {
-	// console.log("reversal triggered; input", inputArray);
-
 
 	letterArray = testString.split("");
 	reversedArray = letterArray.reverse();
@@ -11,10 +9,9 @@ function reversal(testString) {
 
 	document.getElementById("reversePrint").innerHTML = `${reversedString}`;
 
-	console.log("reversedString", reversedString);
-
 	return reversedString;
 }
+
 
 function alphabits(testString) {
 
@@ -22,42 +19,47 @@ function alphabits(testString) {
 	alphaArray = letterArray.sort();
 	alphaString = alphaArray.join("");
 
-	console.log("alphaArray", alphaArray);
-	console.log("alphaString", alphaString);
-
 	document.getElementById("alphaPrint").innerHTML = `${alphaString}`;
-
 }
+
 
 function palindrome(testString) {
 
 	let reversedString = reversal(testString);
 
-	console.log("testString", testString);
-	console.log("reversedString", reversedString);
-
-	if (reversedString.toLowerCase() === testString.toLowerCase()) {
+	if (reversedString.toLowerCase().replace(/ /g, "") === testString.toLowerCase().replace(/ /g, "")) {
 		document.getElementById("palindromePrint").innerHTML = `Your String is a Palindrome!`;
 	} else {
 		document.getElementById("palindromePrint").innerHTML = `Your String is NOT a Palindrome.`;
 	}
-
-	// console.log("palindrome triggered; input", inputArray);
-
-	// document.getElementById("palindromePrint").innerHTML = `${#}`;
-
 }
+
 
 var testString = "";
 
-document.getElementById("goButton").addEventListener("submit", function () {
+document.getElementById("goButton").addEventListener("click", function (event) {
 
 	testString = document.getElementById("textInput").value;
 
-	console.log("testString", testString);
+	let filterExp = new RegExp("[^A-Za-z]+");
+	let filterString = testString.replace(/ /g, "");
+	let filterResult = filterExp.test(filterString);
 
-	reversal(testString);
-	alphabits(testString);
-	palindrome(testString);
+	if (filterResult === true) {
+
+		alert("Please enter only letters and spaces!");
+
+		document.getElementById("textInput").value = "";
+
+	} else if (filterResult === false) {
+
+		reversal(testString);
+		alphabits(testString);
+		palindrome(testString);
+
+		document.getElementById("textInput").value = "";
+	}
+
+	event.preventDefault(); 
 
 });
