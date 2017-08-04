@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Strings</title>
+	</head>
+	<body>
+		<div id="wrapper">
+		
+			<form acton="demo">
+				<label for="textInput">Enter Text Here (letters only!):</label><br>
+				<input type="text" name="textInput" id="textInput" pattern="[a-zA-Z]" title="Enter letters only">
+
+				<!-- <button id="goButton">Go!</button> -->
+				<input type="submit" id="goButton">
+			</form>
+
+				<div>
+					<p>Reverse Letters:</p>
+					<p id="reversePrint" class="output"></p><br>
+				</div>
+
+				<div>
+					<p>Alphabetize:</p>
+					<p id="alphaPrint" class="output"></p><br>
+				</div>
+
+				<div>
+					<p>Is your string a palindrome?</p>
+					<p id="palindromePrint" class="output"></p><br>
+				</div>
+
+		</div>
+
+		<script type="text/javascript" src="strings.js"></script><br><br>
+	</body>
+</html>
